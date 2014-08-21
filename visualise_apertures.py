@@ -134,7 +134,7 @@ def main(args):
                 viewer.hide_ui()
 
             viewer.zoom_level(2).load_regions(photfile)
-            logger.info("Sleeping")
+            logger.info("Sleeping for {} seconds".format(args.sleep))
             time.sleep(args.sleep)
 
 if __name__ == '__main__':
