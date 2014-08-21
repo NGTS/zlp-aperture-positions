@@ -138,7 +138,13 @@ def main(args):
             time.sleep(2)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
+    description = 'Verify aperture positions from a pipeline run'
+    epilog = '''Given a directory of reduced solved images (called proc*.fits), and a directory of
+    photometry files (*.phot) run ds9 interactively and plot the regions over the images. Regions
+    are plotted in equatorial coordinates to test the wcs solution.
+    '''
+    parser = argparse.ArgumentParser(description=description,
+                                     epilog=epilog)
     parser.add_argument('images_dir')
     parser.add_argument('-p', '--photfiles-dir', required=True)
     parser.add_argument('-z', '--zoom', help='Zoom level', required=False, default=2,
