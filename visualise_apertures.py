@@ -135,7 +135,7 @@ def main(args):
 
             viewer.zoom_level(2).load_regions(photfile)
             logger.info("Sleeping")
-            time.sleep(2)
+            time.sleep(args.sleep)
 
 if __name__ == '__main__':
     description = 'Verify aperture positions from a pipeline run'
@@ -156,4 +156,6 @@ if __name__ == '__main__':
     parser.add_argument('--hide-ui', help='Hide ui?', action='store_true', default=False)
     parser.add_argument('--nskip', help='Plot every nth image', type=int, required=False,
                         default=100)
+    parser.add_argument('-s', '--sleep', help='Time to sleep for', required=False,
+                        default=2., type=float)
     main(parser.parse_args())
