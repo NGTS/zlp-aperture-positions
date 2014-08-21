@@ -127,7 +127,7 @@ def main(args):
     viewer = DS9(x=args.xcoord, y=args.ycoord, zoom=args.zoom)
 
     for (i, fname, photfile) in combined:
-        if i % 100 == 0:
+        if i % args.nskip == 0:
             logger.info("Showing file {}: {}".format(i, fname))
             viewer = viewer.open_file(fname)
             if args.hide_ui:
@@ -154,4 +154,6 @@ if __name__ == '__main__':
     parser.add_argument('-y', '--ycoord', help='X coordinate to zoom on', required=False,
                         default=None)
     parser.add_argument('--hide-ui', help='Hide ui?', action='store_true', default=False)
+    parser.add_argument('--nskip', help='Plot every nth image', type=int, required=False,
+                        default=100)
     main(parser.parse_args())
